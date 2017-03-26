@@ -1,0 +1,37 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": ",-----.,--.                  ,--. ,---.   ,--.,------.  ,------.     '  .--./|  | ,---. ,--.,--. ,-|  || o   \\  |  ||  .-.  \\ |  .---'     |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \\  :|  `--,      '  '--'\\|  |' '-' ''  ''  '\\ `-' | .'  /   |  ||  '--'  /|  `---.      `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'     -----------------------------------------------------------------",
+  "main": "server.js",
+  "dependencies": {
+    "async": "^0.2.10",
+    "bl": "^1.2.0",
+    "body-parser": "^1.17.1",
+    "concat-stream": "^1.6.0",
+    "express": "^4.15.2",
+    "how-to-npm": "^2.4.2",
+    "jade": "^1.11.0",
+    "learnyoumongo": "^3.2.1",
+    "mongo": "^0.1.0",
+    "mongodb": "^2.2.25",
+    "socket.io": "^0.9.17",
+    "stylus": "^0.54.5",
+    "through2-map": "^3.0.0",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuriakinzeng/url-shortener.git"
+  },
+  "author": "kuri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kuriakinzeng/url-shortener/issues"
+  },
+  "homepage": "https://github.com/kuriakinzeng/url-shortener#readme"
+}
