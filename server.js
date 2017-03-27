@@ -36,12 +36,12 @@ app.get('/new/:url*',function(req,res){
 });
 
 app.get('/:url',function(req,res){
-    if(isNaN(req.url)){
+    if(isNaN(req.params.url)){
         return res.json({"error":"Invalid Short URL"})
     }
     
     db.collection('urls').findOne({
-        short_url:req.params.url
+        short_url:parseInt(req.params.url)
     }, function(err,doc){
         if (err) throw err;
         if(doc){
