@@ -9,7 +9,7 @@ var db;
 mongo.connect(process.env.MONGOLAB_URI, function(err, d) {
   if(err) throw err;
   db = d;
-  app.listen(8080);
+  app.listen(process.env.PORT || 8080);
 });
 
 app.get('/new/:url*',function(req,res){
@@ -33,7 +33,9 @@ app.get('/new/:url*',function(req,res){
 });
 
 app.get('/:url',function(req,res){
-    // console.log(req.params.url);
+    if(req.params.url == ''){
+        res.send("URL Shortener");
+    };
     db.collection('urls').findOne({
         short_url:parseInt(req.params.url)
     }, function(err,doc){
