@@ -1,4 +1,6 @@
 var app = require('express')();
+app.set('view engine', 'pug');
+
 var validUrl = require('valid-url');
 var mongo = require('mongodb').MongoClient;
 var rand4Numbers = function(){
@@ -10,6 +12,7 @@ mongo.connect(process.env.MONGOLAB_URI, function(err, d) {
   if(err) throw err;
   db = d;
   app.listen(process.env.PORT || 8080);
+  console.log('Be listen')
 });
 
 app.get('/new/:url*',function(req,res){
@@ -22,7 +25,7 @@ app.get('/new/:url*',function(req,res){
             if(err) throw err;
             var response = {};
             response['original_url'] = data.ops[0].original_url;
-            response['short_url'] = process.env.SITE_URL + data.ops[0].short_url;
+            response['short_url'] = process.env.SITE_URL + '/' + data.ops[0].short_url;
             res.json(response);
         });
         // db.close();
@@ -33,11 +36,12 @@ app.get('/new/:url*',function(req,res){
 });
 
 app.get('/:url',function(req,res){
-    if(req.params.url == ''){
-        res.send("URL Shortener");
-    };
+    if(isNaN(req.url)){
+        return res.json({"error":"Invalid Short URL"})
+    }
+    
     db.collection('urls').findOne({
-        short_url:parseInt(req.params.url)
+        short_url:req.params.url
     }, function(err,doc){
         if (err) throw err;
         if(doc){
@@ -46,5 +50,9 @@ app.get('/:url',function(req,res){
             res.send({"error": "Not found"})
         }
     });
-    // db.close();
+    db.close();
+});
+
+app.get('/', function (req, res) {
+  res.render('index', {});
 });

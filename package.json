@@ -9,6 +9,7 @@
   "dependencies": {
     "express": "^4.15.2",
     "mongodb": "^2.2.25",
+    "pug": "^0.1.0",
     "valid-url": "^1.0.9"
   },
   "devDependencies": {},
